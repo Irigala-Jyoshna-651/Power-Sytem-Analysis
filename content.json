@@ -1,0 +1,113 @@
+{
+  "global": {
+    "instituteName": "GATES INSTITUTE OF TECHNOLOGY",
+    "projectType": "Community Service Project (CSP)",
+    "logoImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRCmGgdfTQvxIziaigTaStHsoz3nB4RZCOUoiERkRKU0SNxTbWriewBNchC7efQyLnzBc&usqp=CAU",
+    "socialMedia": [],
+    "footerLinks": [
+      { "text": "Privacy Policy", "url": "#" },
+      { "text": "Terms of Service", "url": "#" },
+      { "text": "Sitemap", "url": "#" }
+    ],
+    "copyrightYear": "2025"
+  },
+  "landingPage": {
+    "title": "GATES Institute of Technology - Community Service Project",
+    "hero": {
+      "heading1": "Community Service Project",
+      "heading2": "IoT Solutions for a Better Tomorrow",
+      "paragraph": "Welcome to our academic endeavor from **GATES INSTITUTE OF TECHNOLOGY**. We're leveraging **IoT technology** to address real-world community challenges and create impactful solutions.",
+      "ctaButtonText": "Explore Our Innovations",
+      "ctaButtonLink": "projects_team.html",
+      "backgroundImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTUFJ8GL8s6yr2kFNAGCEfLdrGMXv0eYKg7w&s"
+    },
+    "acknowledgement": {
+      "heading": "A Project by Students of GATES Institute of Technology",
+      "paragraph": "This Community Service Project (CSP) is a testament to our commitment to practical learning and societal contribution. We aim to apply theoretical knowledge to solve tangible problems within our community."
+    },
+    "features": [
+      {
+        "icon": "https://via.placeholder.com/80x80/28a745/FFFFFF?text=IoT",
+        "title": "IoT-Driven Solutions",
+        "description": "Developing smart, connected systems to monitor, collect data, and automate community services."
+      },
+      {
+        "icon": "https://via.placeholder.com/80x80/007bff/FFFFFF?text=Comm",
+        "title": "Direct Community Impact",
+        "description": "Our projects are designed to directly benefit local communities, addressing specific needs."
+      },
+      {
+        "icon": "https://via.placeholder.com/80x80/6c757d/FFFFFF?text=Acad",
+        "title": "Academic Excellence",
+        "description": "Integrating advanced technical skills with practical application for robust solutions."
+      }
+    ],
+    "aboutUs": {
+      "heading": "Our Mission & Vision",
+      "paragraph": "Our mission is to apply our knowledge in Information Technology and Electronics to develop sustainable and scalable solutions for community well-being. We envision a future where technology empowers every aspect of public service.",
+      "buttonText": "Meet The Team",
+      "buttonLink": "projects_team.html"
+    }
+  },
+  "iframePage": {
+    "title": "Live IoT Data - ThingSpeak",
+    "mainHeading": "Live IoT Data from ThingSpeak",
+    "description": "This section showcases real-time data from our **IoT projects**, streamed directly through **ThingSpeak**. This demonstrates the operational status and effectiveness of our implemented solutions.",
+    "iframes": [
+      {
+        "id": "thingSpeakChart1",
+        "title": "IoT Reading: Environmental Sensor",
+        "src": "https://thingspeak.com/channels/YOUR_CHANNEL_ID_1/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Environmental+Sensor&type=line&width=auto",
+        "fieldDescription": "This chart displays real-time temperature and humidity data collected from our environmental monitoring unit, providing insights into local conditions."
+      }
+    ],
+    "footerDescription": "The data shown reflects the current state of our IoT deployments. This real-time feedback is crucial for monitoring and validating our project's impact."
+  },
+  "projectsTeamPage": {
+    "title": "Our CSP Projects & Team - GATES",
+    "projectsSectionHeading": "Our IoT-Based CSP Initiatives",
+    "projectsDetails": {
+        "title": "Integrated Smart Community Solutions",
+        "description": "Our Community Service Project focuses on developing innovative IoT-based solutions to enhance various aspects of community living. We address challenges in waste management, environmental monitoring, and energy efficiency. Our approach involves deploying low-cost sensors, real-time data analysis through platforms like ThingSpeak, and creating user-friendly interfaces for community engagement. This project is a practical application of our academic knowledge to create tangible benefits for society."
+    },
+    "teamSectionHeading": "Our Dedicated 5-Member Team",
+    "teamMembers": [
+      {
+        "image": "https://randomuser.me/api/portraits/men/1.jpg",
+        "name": "[Student Name 1]",
+        "role": "Team Lead / IoT Architect",
+        "bio": "Responsible for overall project coordination and core IoT system architecture. Passionate about smart solutions and efficient data flow."
+      },
+      {
+        "image": "https://randomuser.me/api/portraits/women/2.jpg",
+        "name": "[Student Name 2]",
+        "role": "Hardware & Sensor Integration",
+        "bio": "Expert in sensor calibration, microcontroller programming, and building robust hardware prototypes for reliable data acquisition."
+      },
+      {
+        "image": "https://randomuser.me/api/portraits/men/3.jpg",
+        "name": "[Student Name 3]",
+        "role": "Software & Data Management",
+        "bio": "Handles data parsing, cloud integration (ThingSpeak), and developing the application logic for our IoT deployments and data processing."
+      },
+      {
+        "image": "https://randomuser.me/api/portraits/women/4.jpg",
+        "name": "[Student Name 4]",
+        "role": "Web Development & UI/UX",
+        "bio": "Focuses on creating user-friendly web interfaces and ensuring our project's data is presented clearly and effectively, enhancing user experience."
+      },
+      {
+        "image": "https://randomuser.me/api/portraits/men/5.jpg",
+        "name": "[Student Name 5]",
+        "role": "Research & Community Liaison",
+        "bio": "Conducts research on community needs and ensures our projects are relevant and impactful, bridging technological solutions with real-world problems and engagement."
+      },
+      {
+        "image": "https://randomuser.me/api/portraits/men/5.jpg",
+        "name": "[Student Name 6]",
+        "role": "Research & Community Liaison",
+        "bio": "Conducts research on community needs and ensures our projects are relevant and impactful, bridging technological solutions with real-world problems and engagement."
+      }
+    ]
+  }
+}

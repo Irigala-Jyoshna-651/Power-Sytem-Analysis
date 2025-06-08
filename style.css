@@ -1,0 +1,739 @@
+/* --- Global Resets & Variables --- */
+:root {
+    --primary-color: #3498db; /* A vibrant, modern blue for branding */
+    --secondary-color: #2c3e50; /* Deep blue-gray for text, strong contrast */
+    --accent-color: #e74c3c; /* A striking red for highlights/CTAs */
+    --background-light: #ecf0f1; /* Soft, light gray for general sections */
+    --background-mid: #dfe6e9; /* Slightly darker light gray for subtle contrast */
+    --background-dark: #232a32; /* Very dark background for header/footer */
+    --card-background: #ffffff; /* Crisp white for cards */
+    --text-light: #ffffff; /* White for text on dark backgrounds */
+    --border-color: #bdc3c7; /* Medium gray border */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.3);
+    --border-radius-soft: 8px;
+    --transition-speed: 0.4s ease-in-out;
+}
+
+/* Basic Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    color: var(--secondary-color);
+    background-color: var(--background-light);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed), transform 0.2s ease-out;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    line-height: 1.2;
+}
+
+h1 { font-size: 3.8rem; }
+h2 { font-size: 2.8rem; margin-top: 3.5rem; }
+h3 { font-size: 2rem; }
+
+/* --- Header & Navigation --- */
+.main-header {
+    background: linear-gradient(to right, #34495e, #2c3e50); /* Dark gradient for depth */
+    padding: 0.8rem 0;
+    box-shadow: var(--shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.institute-logo {
+    height: 65px; /* More prominent logo size */
+    transition: transform 0.3s ease-out;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3)); /* Soft glow for logo */
+}
+
+.institute-logo:hover {
+    transform: scale(1.08); /* More pronounced grow on hover */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 3rem; /* More space between links */
+}
+
+.nav-links a {
+    color: var(--text-light);
+    padding: 0.8rem 0; /* Increased padding */
+    position: relative;
+    font-weight: 600;
+    font-size: 1.15rem; /* Slightly larger text */
+    transition: color var(--transition-speed), transform 0.2s ease-out;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 4px; /* Thicker, more visible underline */
+    background-color: var(--primary-color); /* Vibrant blue underline */
+    bottom: -8px; /* Position slightly below text */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width var(--transition-speed);
+    border-radius: 2px;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color); /* Change text color on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+
+/* Burger menu for mobile */
+.burger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 8px; /* Larger clickable area */
+}
+
+.burger div {
+    width: 32px; /* Slightly larger lines */
+    height: 4px;
+    background-color: var(--text-light);
+    margin: 6px 0;
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+/* --- Hero Section (Landing Page) --- */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('') no-repeat center center/cover; /* Slightly lighter overlay for better text visibility */
+    color: var(--text-light);
+    text-align: center;
+    padding: 10rem 1.5rem;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px; /* Wider content area */
+    /* opacity and transform handled by JS based on image load */
+}
+
+/* Animations for hero content - initially hidden, shown after image load */
+.hero-content h1,
+.hero-content h2,
+.hero-content p,
+.hero-content .cta-button {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.hero-section.loaded .hero-content h1 { opacity: 1; transform: translateY(0); }
+.hero-section.loaded .hero-content h2 { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.hero-section.loaded .hero-content p { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+.hero-section.loaded .hero-content .cta-button { opacity: 1; transform: translateY(0); transition-delay: 0.9s; }
+
+
+.hero-content h1 {
+    font-size: 5.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-light);
+    text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.9);
+    letter-spacing: 0.08em;
+}
+.hero-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+    color: var(--accent-color);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.6rem;
+    margin-bottom: 3.5rem;
+    color: var(--text-light);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    line-height: 1.5;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 1.4rem 3.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.3rem;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: inline-block;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    border: none;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Institute Acknowledgement Section --- */
+.institute-acknowledgement-section {
+    background-color: var(--background-mid);
+    padding: 4.5rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.institute-acknowledgement-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    font-size: 2.5rem;
+}
+
+.institute-acknowledgement-section p {
+    font-size: 1.2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--secondary-color);
+}
+
+/* --- Features Section (Landing Page) --- */
+.features-section {
+    background-color: var(--background-light);
+    padding: 6.5rem 0;
+    text-align: center;
+}
+
+.features-section .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.feature-item {
+    background-color: var(--card-background);
+    padding: 3.5rem;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.feature-item:hover {
+    transform: translateY(-15px) scale(1.04);
+    box-shadow: var(--shadow-strong);
+    background-color: var(--background-mid);
+}
+
+.feature-item img {
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));
+}
+
+.feature-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    font-size: 1.9rem;
+}
+
+.feature-item p {
+    font-size: 1.05rem;
+    color: var(--secondary-color);
+}
+
+/* --- About Us Section (Landing Page) --- */
+.about-us-section {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: var(--text-light);
+    padding: 6.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-us-section h2 {
+    color: var(--text-light);
+    margin-bottom: 2.5rem;
+    font-size: 3rem;
+}
+
+.about-us-section p {
+    font-size: 1.3rem;
+    max-width: 950px;
+    margin: 0 auto 3rem;
+    opacity: 0.98;
+}
+
+.learn-more-button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 1.2rem 2.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.15rem;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: inline-block;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+.learn-more-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* --- iFrame Page Specific Styling --- */
+.iframe-container {
+    padding: 6.5rem 0;
+    text-align: center;
+    background-color: var(--background-light);
+}
+
+.iframe-container h2 {
+    margin-bottom: 1.8rem;
+    color: var(--primary-color);
+    font-size: 2.8rem;
+}
+
+.iframe-container p {
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.responsive-iframe-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin: 3.5rem auto;
+    max-width: 900px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-strong);
+    border: 3px solid var(--primary-color);
+}
+
+.responsive-iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.iframe-description {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-top: 2rem;
+    font-size: 1.05rem;
+}
+
+/* --- Projects & Team Page Specific Styling --- */
+.projects-team-section {
+    padding: 6.5rem 0;
+    background-color: var(--background-light);
+}
+
+.projects-team-section h2 {
+    text-align: center;
+    margin-bottom: 4.5rem;
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.project-details-section {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    padding: 3.5rem;
+    margin-bottom: 5.5rem;
+    border: 1px solid var(--border-color);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.project-details-section h3 {
+    color: var(--accent-color);
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-details-section p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--secondary-color);
+}
+
+
+.team-heading {
+    margin-top: 7rem;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 3rem;
+    padding-top: 3rem;
+}
+
+.team-member-card {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    text-align: center;
+    padding: 3rem;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+    border: 1px solid var(--border-color);
+}
+
+.team-member-card:hover {
+    transform: translateY(-15px) scale(1.04);
+    box-shadow: var(--shadow-strong);
+    border-color: var(--accent-color);
+}
+
+.team-member-card img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 2rem;
+    border: 6px solid var(--accent-color);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out;
+}
+
+.team-member-card img:hover {
+    transform: scale(1.06);
+}
+
+.team-member-card h3 {
+    margin-bottom: 0.8rem;
+    color: var(--secondary-color);
+    font-size: 1.7rem;
+}
+
+.team-member-card p {
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.team-member-card .member-bio {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background: linear-gradient(to right, #232a32, #1a2027);
+    color: var(--text-light);
+    padding: 2.5rem 0; /* Reduced padding for a thinner look */
+    text-align: center;
+    border-top: 5px solid var(--primary-color); /* Thinner border */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center; /* Center align items */
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem; /* Reduced margin */
+    padding: 0 1.5rem;
+    gap: 2rem; /* Add gap between elements for better spacing */
+}
+
+.footer-logo {
+    font-size: 1.8rem; /* Slightly smaller font size */
+    font-weight: 700;
+    color: var(--text-light);
+    margin-right: 2rem; /* Space between logo and links */
+}
+
+.footer-links ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem; /* Reduced gap between links */
+    flex-wrap: wrap; /* Allow links to wrap on smaller screens */
+    justify-content: center; /* Center links if they wrap */
+}
+
+.footer-links a {
+    color: var(--text-light);
+    transition: color var(--transition-speed), transform 0.2s ease-out;
+    font-size: 0.95rem; /* Slightly smaller font size */
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px); /* Less dramatic lift */
+}
+
+.social-media {
+    /* This section is now removed from HTML by JS, so no need for CSS */
+    display: none; /* Explicitly hide it if it somehow appears */
+}
+
+.main-footer p {
+    margin-top: 1.5rem; /* Reduced margin */
+    font-size: 0.85rem; /* Smaller copyright text */
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* --- Responsive Design --- */
+
+/* Tablet and Smaller Desktops (992px) */
+@media (max-width: 992px) {
+    html {
+        font-size: 15px;
+    }
+    h1 { font-size: 3.2rem; }
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 1.8rem; }
+
+    .nav-links {
+        gap: 1.8rem;
+    }
+
+    .institute-logo {
+        height: 55px;
+    }
+
+    .hero-section {
+        padding: 8rem 1.5rem;
+        min-height: 75vh;
+    }
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content h2 {
+        font-size: 2.4rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .cta-button {
+        padding: 1rem 2.2rem;
+        font-size: 1.1rem;
+    }
+
+    .features-section .container,
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem; /* Adjust gap for smaller screens */
+        margin-right: 0; /* Remove specific margin on smaller screens */
+    }
+    .footer-logo {
+        margin-right: 0; /* Remove specific margin on smaller screens */
+        margin-bottom: 1rem; /* Add margin below logo */
+    }
+    .footer-links ul {
+        gap: 1rem;
+    }
+}
+
+/* Mobile Devices (768px and below) */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
+
+    .institute-logo {
+        height: 50px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        text-align: center;
+        background-color: var(--background-dark);
+        padding: 1.5rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 66px;
+        left: 0;
+        box-shadow: var(--shadow-medium);
+        transition: transform 0.4s ease-out;
+        transform: translateY(-100%);
+    }
+
+    .nav-links.nav-active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .nav-links li {
+        margin: 0.8rem 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .hero-section {
+        padding: 5rem 1rem;
+        min-height: 65vh;
+    }
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    .hero-content p {
+        font-size: 1.05rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+    }
+
+    .institute-acknowledgement-section,
+    .features-section,
+    .about-us-section,
+    .iframe-container,
+    .projects-team-section {
+        padding: 4.5rem 1rem;
+    }
+
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.5rem; }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+    .team-member-card img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .footer-content {
+        padding: 0 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .footer-logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    .footer-links ul {
+        gap: 0.8rem;
+        flex-direction: column; /* Stack links vertically on tiny screens */
+    }
+    .project-details-section {
+        padding: 2rem;
+    }
+}
+
+/* Burger Animation */
+.burger.toggle .line1 {
+    transform: rotate(-45deg) translate(-8px, 7px);
+}
+
+.burger.toggle .line2 {
+    opacity: 0;
+}
+
+.burger.toggle .line3 {
+    transform: rotate(45deg) translate(-8px, -7px);
+}
